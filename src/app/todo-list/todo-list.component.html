@@ -1,9 +1,15 @@
-<div class="px-4">
-    <div *ngFor="let item of todoItems" class="mt-4 block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-        <div class="flex-column justify-between">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-600 dark:text-white">{{ item.value }}</h5>
-            <i class="fa fa-cart-shopping"></i>
-            <p class="font-normal text-gray-700 dark:text-gray-400"></p>
+<div class="px-4 flex items-center justify-center">
+    <div class="flex-column items-center justify-center w-3/5">
+        <div *ngFor="let item of todoItems" class="mt-4 block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <div class="flex justify-between">
+                <div class="flex items-center mb-2">
+                    <fa-icon [icon]="item.icon" class="text-white"></fa-icon>
+                    <h5 class="ml-4 text-2xl font-bold tracking-tight text-gray-600 dark:text-white">{{ item.value }}</h5>
+                </div>
+                <button class="rounded-md bg-blue-700 hover:bg-blue-500 px-3 py-1" (click)="null">
+                    <fa-icon [icon]="faCheck" class="text-white"></fa-icon>
+                </button>
+            </div>
         </div>
     </div>
 </div>
