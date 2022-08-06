@@ -1,19 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HomeComponent } from './home.component';
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+import { ManageListComponent } from './manage-list.component';
+
+describe('ManageListComponent', () => {
+  let component: ManageListComponent;
+  let fixture: ComponentFixture<ManageListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomeComponent]
+      declarations: [ManageListComponent]
     })
       .compileComponents();
-  });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(ManageListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

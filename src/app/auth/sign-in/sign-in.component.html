@@ -1,0 +1,18 @@
+<div [formGroup]="fg">
+    <mat-form-field appearance="outline">
+        <mat-label>Identifiant</mat-label>
+        <input matInput type="text" formControlName="email" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput type="password" formControlName="password" />
+    </mat-form-field>
+    <div class="mt-5 flex">
+        <button class="todo-btn-primary" (click)="login()">
+            <span>Connexion</span>
+        </button>
+    </div>
+    <button class="todo-btn-primary" (click)="redirectSignup()">
+        <span>Créer un compte</span>
+    </button>
+</div>

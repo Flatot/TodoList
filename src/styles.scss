@@ -2,3 +2,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@layer components {
+    .todo-btn-primary {
+        @apply rounded-md bg-blue-600 px-4 py-2 hover:bg-blue-700;
+    }
+    .todo-btn-primary-rounded {
+        @apply rounded-full bg-blue-600 hover:bg-blue-700;
+    }
+    .todo-btn-primary {
+        span {
+            @apply text-white;
+        }
+    }
+}

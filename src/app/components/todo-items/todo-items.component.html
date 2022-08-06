@@ -1,0 +1,43 @@
+<ng-container *ngIf="loading">
+    <div class="mt-4 px-4 flex justify-center">
+        <mat-spinner [diameter]="40"></mat-spinner>
+    </div>
+</ng-container>
+<ng-container *ngIf="!loading">
+    <div class="mt-4 px-4 flex items-center justify-center">
+        <div class="flex-column items-center justify-center min-w-full md:min-w-0 md:w-3/5">
+            <ng-container *ngIf="todoItems.length > 0">
+                <div *ngFor="let item of todoItems; index as idx"
+                    class="mt-4 block p-6 rounded-lg border shadow-md bg-gray-800 border-gray-900 hover:bg-gray-900">
+                    <div class="flex justify-between">
+                        <div class="flex items-center mb-2">
+                            <button class="ml-2 rounded-md border-2 border-blue-700 hover:bg-blue-700 px-2 py-1"
+                                [ngClass]="{ 'border-green-600 bg-green-600 hover:bg-transparent': item.checked}"
+                                (click)="checkedItem(idx)">
+                                <fa-icon [icon]="faCheck" class="text-white"></fa-icon>
+                            </button>
+                            <h5 class="ml-4 text-2xl font-bold tracking-tight text-white">{{ item.name }}
+                            </h5>
+                        </div>
+                        <div>
+                            <button class="todo-btn-primary" (click)="manageToDoItem(item, idx)">
+                                <fa-icon [icon]="faEdit" class="text-white"></fa-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <div *ngIf="todoItems.length == 0" class="flex-col">
+                <img src="assets/images/todo-list.jpg">
+                <div class="flex justify-center">
+                    <span class="text-xl text-gray-800">Aucune tâche</span>
+                </div>
+            </div>
+            <div class="mt-5 flex justify-end">
+                <button class="todo-btn-primary-rounded w-12 h-12" (click)="manageToDoItem()">
+                    <fa-icon [icon]="faAdd" class="text-2xl text-white"></fa-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</ng-container>

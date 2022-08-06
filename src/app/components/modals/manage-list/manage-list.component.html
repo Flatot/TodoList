@@ -1,0 +1,50 @@
+<!-- HEADER -->
+<div class="shadow-md flex items-center justify-between">
+    <span>{{ data ? "Modifier la liste" : "Créer une liste" }}</span>
+    <button class="hover:bg-slate-200 py-1 px-2" (click)="dialogRef.close()">Quitter</button>
+</div>
+<!-- CONTENT -->
+<div [formGroup]="todoListGroup" class="mt-5 p-4">
+
+    <mat-form-field appearance="outline" class="d-flex justify-center w-11/12">
+        <mat-label>Nom de la liste</mat-label>
+        <input matInput type="text" placeholder="Ex: Liste de courses" formControlName="name">
+    </mat-form-field>
+
+    <div class="font-bold">
+        Listes des utilisateurs :
+    </div>
+    <div *ngFor="let user of todosUsers; index as idx" class="ml-3 mt-2 flex items-center justify-between">
+        <div>
+            <ng-container *ngIf="user?.gender == 'm'">
+                <fa-icon [icon]="faMars" class="text-green-500 mr-3"></fa-icon>
+            </ng-container>
+            <ng-container *ngIf="user?.gender == 'f'">
+                <fa-icon [icon]="faVenus" class="text-pink-700 mr-3"></fa-icon>
+            </ng-container>
+            {{ user?.first_name }} {{ user?.last_name }}
+        </div>
+        <button class="todo-btn-primary bg-red-700 hover:bg-red-800" (click)="removeUserInList(idx)">
+            <fa-icon [icon]="faTrash" class="text-white"></fa-icon>
+        </button>
+    </div>
+
+    <mat-form-field appearance="outline" class="mt-3 d-flex justify-center w-11/12">
+        <mat-label>Ajouter un utilisateur</mat-label>
+        <input matInput type="text" [formControl]="userControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let user of filteredUsersList" [value]="user" (click)="addUserInList(user)">
+                {{ user?.first_name }} {{ user?.last_name }}
+            </mat-option>
+            <mat-option *ngIf="filteredUsersList.length == 0">
+                Aucun résultat
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <div class="mt-3">
+        <button class="todo-btn-primary" (click)="saveItem()">
+            <span>Sauvegarder</span>
+        </button>
+    </div>
+</div>

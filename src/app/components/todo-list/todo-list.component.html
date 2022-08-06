@@ -1,0 +1,33 @@
+<ng-container *ngIf="loading">
+    <div class="mt-4 px-4 flex justify-center">
+        <mat-spinner [diameter]="40"></mat-spinner>
+    </div>
+</ng-container>
+<ng-container *ngIf="!loading">
+    <div class="mt-4 px-4 flex items-center justify-center">
+        <div class="flex-column items-center justify-center w-11/12 md:w-3/5">
+            <div *ngFor="let item of todoList; index as idx"
+                class="mt-4 block p-6 rounded-lg border shadow-md bg-gray-800 border-gray-900 hover:bg-gray-900 cursor-pointer"
+                (click)="viewList(idx)" longPress (mouseLongPress)="manageToDoList(item, idx)">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center mb-2">
+                        <h5 class="ml-4 text-2xl font-bold tracking-tight text-white">{{ item.name }}
+                        </h5>
+                    </div>
+                    <fa-icon [icon]="faAngleRight" class="text-white"></fa-icon>
+                </div>
+            </div>
+            <div *ngIf="todoList.length == 0" class="flex-col">
+                <img src="assets/images/todo-list.jpg">
+                <div class="flex justify-center">
+                    <span class="text-xl text-gray-800">Aucune To Do Listes</span>
+                </div>
+            </div>
+            <div class="mt-5 flex justify-end">
+                <button class="todo-btn-primary-rounded w-12 h-12" (click)="manageToDoList()">
+                    <fa-icon [icon]="faAdd" class="text-2xl text-white"></fa-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</ng-container>
