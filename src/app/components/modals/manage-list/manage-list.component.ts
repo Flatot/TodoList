@@ -41,7 +41,9 @@ export class ManageListComponent implements OnInit {
     this.apiService.listUser().subscribe({
       next: (res) => {
         this.usersList = res;
-        this.todosUsers = this.data?.users.map((user: any) => this.getUserDetails(user));
+        if (this.data?.users) {
+          this.todosUsers = this.data?.users.map((user: any) => this.getUserDetails(user));
+        }
         // FILTER TO REMOVE USERS ALREADY IN TODO LIST
         this.filteredUsersList = res.filter((user: any) => !this.data?.users.includes(user?.id));
       },
@@ -66,6 +68,7 @@ export class ManageListComponent implements OnInit {
 
   addUserInList(user: any) {
     this.todosUsers.push(user);
+    this.userControl.setValue("");
   }
 
   removeUserInList(idx: number) {
@@ -74,7 +77,11 @@ export class ManageListComponent implements OnInit {
   }
 
   saveItem() {
-    this.dialogRef.close({ ...this.todoListGroup.getRawValue(), users: this.todosUsers.map(user => user?.id) });
+    var data = { ...this.todoListGroup.getRawValue() };
+    if (this.todosUsers) {
+      data.users = this.todosUsers.map(user => user?.id);
+    }
+    this.dialogRef.close(data);
   }
 
   getUserDetails(userId: string) {

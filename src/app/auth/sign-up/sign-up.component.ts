@@ -61,7 +61,14 @@ export class SignUpComponent implements OnInit {
         });
       },
       error: (err) => {
-        this.snackBar.open("Erreur lors de la création du compte", "Fermer.", { duration: 3000 });
+        switch (err) {
+          case "auth/wrong-password":
+            this.snackBar.open("Le mot de passe doit faire minimum 8 caractères.", "Fermer.", { duration: 3000 });
+            break;
+          default:
+            this.snackBar.open("Erreur lors de la création du compte", "Fermer.", { duration: 3000 });
+            break;
+        }
       }
     })
   }
