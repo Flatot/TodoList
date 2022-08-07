@@ -1,6 +1,6 @@
 {
-  "name": "todolist",
-  "short_name": "todolist",
+  "name": "Flatodo",
+  "short_name": "Flatodo",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
