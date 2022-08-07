@@ -1,46 +1,53 @@
-<div class="p-5">
-    <div [formGroup]="fg" class="grid grid-cols-1">
-        <mat-form-field appearance="outline">
-            <mat-label>Identifiant</mat-label>
-            <input matInput type="text" formControlName="email" />
-            <mat-error>Ce champ est requis</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Mot de passe</mat-label>
-            <input matInput type="password" formControlName="password" />
-            <mat-error *ngIf="fg.get('password')?.hasError('required')">Ce champ est requis</mat-error>
-            <mat-error *ngIf="fg.get('password')?.hasError('notSame')">Les deux mots de passes doivent être identique
-            </mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Confirmation du mot de passe</mat-label>
-            <input matInput type="password" formControlName="confirm_password" />
-            <mat-error *ngIf="fg.get('confirm_password')?.hasError('required')">Ce champ est requis</mat-error>
-            <mat-error *ngIf="fg.get('confirm_password')?.hasError('notSame')">
-                Les deux mots de passes doivent être identique
-            </mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Prénom</mat-label>
-            <input matInput type="text" formControlName="first_name" />
-            <mat-error>Ce champ est requis</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Nom de famille</mat-label>
-            <input matInput type="text" formControlName="last_name" />
-            <mat-error>Ce champ est requis</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Genre</mat-label>
-            <mat-select formControlName="gender">
-                <mat-option value="m">Homme</mat-option>
-                <mat-option value="f">Femme</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-    <div class="mt-5 flex">
-        <button class="rounded-md bg-blue-600 hover:bg-blue-700 px-4 py-2" (click)="createAccount()">
-            <span class="text-2xl text-white">Valider</span>
-        </button>
+<div class="flex justify-center items-center mt-5 p-5">
+    <div [formGroup]="fg" class="w-11/12">
+        <div class="flex items-center">
+            <img src="assets/images/icon.png" alt="" width="50px">
+            <div class="ml-2 text-gray-700 font-bold text-xl">Flatodo</div>
+        </div>
+        <div [formGroup]="fg" class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8">
+            <mat-form-field appearance="outline">
+                <mat-label>Identifiant</mat-label>
+                <input matInput type="text" formControlName="email" />
+                <mat-error>Ce champ est requis</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Mot de passe</mat-label>
+                <input matInput type="password" formControlName="password" />
+                <mat-error *ngIf="fg.get('password')?.hasError('required')">Ce champ est requis</mat-error>
+                <mat-error *ngIf="fg.get('password')?.hasError('notSame')">Les deux mots de passes doivent être
+                    identique
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Confirmation du mot de passe</mat-label>
+                <input matInput type="password" formControlName="confirm_password" />
+                <mat-error *ngIf="fg.get('confirm_password')?.hasError('required')">Ce champ est requis</mat-error>
+                <mat-error *ngIf="fg.get('confirm_password')?.hasError('notSame')">
+                    Les deux mots de passes doivent être identique
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Prénom</mat-label>
+                <input matInput type="text" formControlName="first_name" />
+                <mat-error>Ce champ est requis</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Nom de famille</mat-label>
+                <input matInput type="text" formControlName="last_name" />
+                <mat-error>Ce champ est requis</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Genre</mat-label>
+                <mat-select formControlName="gender">
+                    <mat-option value="m">Homme</mat-option>
+                    <mat-option value="f">Femme</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="mt-5 flex">
+            <button class="todo-btn-primary" (click)="createAccount()">
+                <span>Valider</span>
+            </button>
+        </div>
     </div>
 </div>
